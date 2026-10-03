@@ -3,7 +3,7 @@
 //
 // Settings (set in the host's environment variables, never in this file):
 //   SQUARE_ACCESS_TOKEN  required. From developer.squareup.com > your app > Credentials.
-//   SQUARE_ENV           "production" for real cards, anything else uses Square's sandbox.
+//   SQUARE_SANDBOX       optional. Set to "true" to use Square's test sandbox instead of real cards.
 //   SQUARE_LOCATION_ID   optional. Defaults to the first active location on the account.
 
 const PRODUCTS = {
@@ -42,9 +42,9 @@ export default async (req) => {
 
   const token = process.env.SQUARE_ACCESS_TOKEN;
   if (!token) return json(503, { error: 'Card checkout is not set up yet' });
-  const base = process.env.SQUARE_ENV === 'production'
-    ? 'https://connect.squareup.com'
-    : 'https://connect.squareupsandbox.com';
+  const base = process.env.SQUARE_SANDBOX === 'true'
+    ? 'https://connect.squareupsandbox.com'
+    : 'https://connect.squareup.com';
 
   let input;
   try { input = await req.json(); } catch { return json(400, { error: 'Bad request' }); }

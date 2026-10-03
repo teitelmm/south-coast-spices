@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>South Coast Spices</title>
+<meta name="description" content="Coastal Char meat seasoning and Coastal Roast potato seasoning, mixed by hand in Orange County, California. $8 a jar, free shipping over $30.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gelasio:wght@400;600;700&family=Libre+Franklin:wght@400;500;600&display=swap">
+<style>
+/* Product-first shop page: white ground, morning-haze panels, label-style serif type, double rules taken from the jar labels. */
+:root {
+  --paper: #ffffff;
+  --ink: #1b1c1c;
+  --muted: #4f5a5c;
+  --rule: #d9dcdc;
+  --haze: #dfe7e8;
+  --stone: #f3f4f4;
+  --note: #2f4d55;
+  --serif: Gelasio, Georgia, "Times New Roman", serif;
+  --sans: "Libre Franklin", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.6 var(--sans); }
+img { max-width: 100%; display: block; }
+a { color: var(--ink); }
+a:hover { color: var(--muted); }
+:focus-visible { outline: 3px solid var(--note); outline-offset: 3px; }
+[hidden] { display: none !important; }
+h1, h2, h3 { font-family: var(--serif); margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.wrap { max-width: 1200px; margin: 0 auto; padding-inline: 24px; }
+.kicker { font-family: var(--serif); font-size: 13px; letter-spacing: .3em; color: var(--muted); text-transform: uppercase; }
+.h2 { font-weight: 400; font-size: clamp(32px, 4vw, 42px); line-height: 1.1; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font: 600 16px/1 var(--sans); background: var(--ink); color: #fff; border: 1px solid var(--ink); border-radius: 2px; padding: 15px 26px; min-height: 48px; cursor: pointer; text-decoration: none; }
+.btn:hover { background: #343636; color: #fff; }
+.btn.light { background: #fff; color: var(--ink); }
+.btn.light:hover { background: var(--stone); color: var(--ink); }
+.btn[disabled] { opacity: .45; cursor: not-allowed; }
+
+.banner { background: var(--ink); color: #fff; text-align: center; font-size: 14px; padding: 10px 16px; }
+
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: rgba(255,255,255,.96); border-bottom: 1px solid var(--rule); backdrop-filter: blur(6px); }
+header.top .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 16px; padding-block: 12px; }
+.brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.brand img { width: 56px; height: 56px; }
+.brand b { display: block; font: 700 18px/1.2 var(--serif); letter-spacing: .16em; }
+.brand small { display: block; font: 12px/1.2 var(--serif); letter-spacing: .22em; color: var(--muted); }
+nav.main { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 26px; font-size: 15px; font-weight: 500; }
+nav.main a { text-decoration: none; padding: 12px 0; }
+.cart-btn { font: 500 15px var(--sans); background: #fff; color: var(--ink); border: 1px solid var(--ink); border-radius: 2px; padding: 11px 18px; min-height: 44px; cursor: pointer; font-variant-numeric: tabular-nums; }
+.cart-btn:hover { background: var(--stone); }
+
+.hero { background: var(--haze); overflow: hidden; }
+.hero .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 56px; padding-block: 80px 88px; }
+.hero-copy { flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 22px; }
+.hero-kicker { font: 14px var(--serif); letter-spacing: .3em; display: flex; flex-direction: column; gap: 10px; }
+.hero-kicker::after { content: ""; width: 96px; height: 1px; background: var(--ink); }
+.hero h1 { font-weight: 400; font-size: clamp(40px, 5vw, 62px); line-height: 1.06; letter-spacing: -.01em; }
+.hero .lede { font-size: 19px; max-width: 30em; }
+.hero .ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 8px; }
+.hero .ctas .link { text-underline-offset: 4px; padding: 15px 8px; font-weight: 500; }
+.hero-jars { flex: 1 1 460px; min-width: 0; display: flex; align-items: flex-start; padding-bottom: 24px; }
+.hero-jars img { width: 58%; flex: 0 1 58%; min-width: 0; position: relative; box-shadow: 0 1px 2px rgba(0,0,0,.14), 0 18px 36px rgba(0,0,0,.14); }
+.hero-jars img:first-child { transform: rotate(-2deg); z-index: 1; }
+.hero-jars img:last-child { margin-left: -16%; margin-top: 64px; transform: rotate(2.5deg); z-index: 2; }
+
+.shop { padding-block: 96px 40px; }
+.section-head { display: flex; flex-direction: column; gap: 12px; margin-bottom: 44px; max-width: 42em; }
+.section-head .sub { color: var(--muted); }
+.products { display: flex; flex-wrap: wrap; gap: 40px; }
+.product { flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 18px; }
+.product .photo { background: var(--stone); padding: 48px 40px; display: flex; justify-content: center; }
+.product .photo img { width: 70%; max-width: 360px; box-shadow: 0 10px 24px rgba(0,0,0,.12); }
+.product .title { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-top: 6px; }
+.product h3 { font-weight: 600; font-size: 30px; line-height: 1.15; }
+.price { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.product .meta { margin-top: -10px; color: var(--muted); font-size: 15px; }
+.product p.desc { max-width: 34em; }
+.facts { margin: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 20px; padding: 14px 0; border-block: 1px solid var(--rule); font-size: 15px; }
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; }
+.buy-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+.added { font-size: 15px; color: var(--note); min-height: 1.5em; }
+.added a { color: var(--note); text-underline-offset: 3px; }
+
+.pack-wrap { padding-block: 24px 96px; }
+.pack { border: 5px double var(--ink); padding: 28px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
+.pack > div:first-child { flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.pack h3 { font-weight: 600; font-size: 26px; line-height: 1.2; }
+.pack p { color: var(--muted); }
+.pack .price { color: var(--ink); }
+.pack .buy-row { gap: 20px; }
+
+.how { background: var(--haze); }
+.how .wrap { padding-block: 96px; }
+.cards { display: flex; flex-wrap: wrap; gap: 32px; }
+.card { flex: 1 1 440px; min-width: 0; background: #fff; border: 5px double var(--ink); padding: 36px; }
+.card h3 { font-weight: 600; font-size: 24px; margin-bottom: 4px; }
+.card .sub { color: var(--muted); font-size: 15px; margin-bottom: 22px; }
+.card ol { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 12px; }
+
+.about { background: var(--stone); }
+.about .wrap { padding-block: 96px; display: flex; flex-wrap: wrap; align-items: center; gap: 64px; }
+.about img { flex: 0 1 300px; width: 300px; mix-blend-mode: multiply; }
+.about .copy { flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 18px; max-width: 36em; }
+
+.contact .wrap { padding-block: 96px; display: flex; flex-wrap: wrap; gap: 56px; }
+.contact .info { flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+.contact .info span { display: block; color: var(--muted); font-size: 14px; }
+.contact .info a { text-underline-offset: 3px; overflow-wrap: anywhere; }
+form.contact-form { flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+label { display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500; }
+input, textarea { font: 16px var(--sans); color: var(--ink); background: #fff; padding: 12px 14px; border: 1px solid #8a9496; border-radius: 2px; min-height: 48px; width: 100%; }
+textarea { resize: vertical; }
+.form-note { font-size: 15px; color: var(--note); min-height: 1.5em; }
+
+footer { background: var(--ink); color: #fff; }
+footer .wrap { padding-block: 64px 32px; display: flex; flex-direction: column; gap: 48px; }
+footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; }
+footer .mark { flex: 1 1 280px; min-width: 0; display: flex; align-items: center; gap: 18px; }
+footer .mark img { width: 88px; height: 88px; filter: invert(1); }
+footer .mark b { display: block; font: 700 17px/1.3 var(--serif); letter-spacing: .16em; }
+footer .mark small { display: block; font-size: 14px; color: #b9c1c2; }
+footer nav { display: flex; flex-wrap: wrap; gap: 32px 48px; font-size: 15px; }
+footer nav div { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+footer nav span { font: 12px var(--serif); letter-spacing: .24em; color: #b9c1c2; }
+footer a { color: #fff; text-decoration: none; overflow-wrap: anywhere; }
+footer a:hover { color: #fff; text-decoration: underline; }
+footer .legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-top: 20px; border-top: 1px solid #3a3d3d; font-size: 13px; color: #b9c1c2; }
+
+/* Cart drawer */
+.scrim { position: fixed; inset: 0; background: rgba(27,28,28,.4); z-index: 40; }
+.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(440px, 100%); background: #fff; z-index: 50; display: flex; flex-direction: column; box-shadow: -12px 0 32px rgba(0,0,0,.15); padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.drawer-head { display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; border-bottom: 1px solid var(--rule); }
+.drawer-head h2 { font-weight: 600; font-size: 24px; }
+.close { font: 500 15px var(--sans); background: none; border: 0; padding: 12px; margin: -12px; cursor: pointer; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.drawer-body { flex: 1; overflow-y: auto; padding: 8px 24px 24px; display: flex; flex-direction: column; gap: 20px; }
+.empty { color: var(--muted); padding-top: 16px; }
+.line { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 16px; padding: 16px 0; border-bottom: 1px solid var(--rule); align-items: center; }
+.line b { font: 600 18px var(--serif); }
+.line .each { color: var(--muted); font-size: 14px; }
+.line .total { font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; align-self: start; }
+.qty { display: flex; align-items: center; gap: 4px; }
+.qty button { width: 40px; height: 40px; font: 500 18px var(--sans); background: #fff; border: 1px solid #8a9496; border-radius: 2px; cursor: pointer; color: var(--ink); }
+.qty output { min-width: 32px; text-align: center; font-variant-numeric: tabular-nums; }
+.remove { justify-self: end; font: 14px var(--sans); color: var(--muted); background: none; border: 0; cursor: pointer; text-decoration: underline; padding: 8px 0; }
+.ship-meter { font-size: 15px; background: var(--haze); padding: 12px 14px; }
+fieldset { border: 0; margin: 20px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+legend { font-size: 14px; font-weight: 500; margin-bottom: 8px; padding: 0; }
+.choice { flex-direction: row; align-items: center; gap: 10px; font-size: 15px; font-weight: 400; min-height: 44px; }
+.choice input { width: 20px; height: 20px; min-height: 0; margin: 0; accent-color: var(--ink); }
+.sum { display: flex; justify-content: space-between; font-size: 18px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.sum-note { font-size: 14px; color: var(--muted); }
+.drawer-foot { border-top: 1px solid var(--rule); padding: 18px 24px; display: flex; flex-direction: column; gap: 10px; }
+.drawer-foot .btn { width: 100%; }
+.order-help { font-size: 14px; color: var(--muted); }
+.order-help code { font: inherit; color: var(--ink); user-select: all; overflow-wrap: anywhere; }
+
+@media (max-width: 640px) {
+  .brand img { width: 46px; height: 46px; }
+  .brand b { font-size: 15px; }
+  .brand small { font-size: 10px; }
+  nav.main a { display: none; }
+  .hero .wrap, .how .wrap, .about .wrap, .contact .wrap { padding-block: 56px; }
+  .shop { padding-top: 64px; }
+  .pack { padding: 22px; }
+  .card { padding: 24px; }
+  .product .photo { padding: 32px 24px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<div class="banner">Free shipping on orders over $30 · Free pickup in Orange County</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <img src="logo.svg" alt="">
+      <span><b>SOUTH COAST SPICES</b><small>ORANGE COUNTY · CALIFORNIA</small></span>
+    </a>
+    <nav class="main" aria-label="Main">
+      <a href="#shop">Shop</a>
+      <a href="#how">How to use</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <button class="cart-btn" type="button" id="open-cart" aria-haspopup="dialog">Cart (<span id="cart-count">0</span>)</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="hero-kicker">HAND–BLENDED</p>
+        <h1>Meat and potatoes, seasoned right.</h1>
+        <p class="lede">Two jars, that's the whole lineup. Coastal Char goes on the meat, Coastal Roast goes on the potatoes, and we mix every batch ourselves right here in Orange County.</p>
+        <div class="ctas">
+          <a class="btn" href="#shop">Grab a jar</a>
+          <a class="link" href="#how">See how we use 'em</a>
+        </div>
+      </div>
+      <div class="hero-jars">
+        <img src="coastal-char-label.svg" alt="Coastal Char label">
+        <img src="coastal-roast-label.svg" alt="Coastal Roast label">
+      </div>
+    </div>
+  </section>
+
+  <section class="shop wrap" id="shop">
+    <div class="section-head">
+      <p class="kicker">Shop</p>
+      <h2 class="h2">The lineup</h2>
+      <p class="sub">Shipping is free on orders over $30. Live in Orange County? Choose free pickup when you check out.</p>
+    </div>
+    <div class="products">
+      <article class="product">
+        <div class="photo"><img src="coastal-char-label.svg" alt="Coastal Char label"></div>
+        <div class="title"><h3>Coastal Char</h3><p class="price">$8</p></div>
+        <p class="meta">Meat seasoning · 4 oz jar</p>
+        <p class="desc">Our go-to for anything headed for the grill. Shake on a good coat, let it sit while the grill heats up, and cook it hot. That's how you get a real crust.</p>
+        <dl class="facts">
+          <dt>Best on</dt><dd>Steaks, burgers, chicken</dd>
+          <dt>Ingredients</dt><dd>Paprika, sea salt, light brown sugar, black pepper, dried onion, marjoram, cumin, garlic, silicon dioxide (keeps it from clumping)</dd>
+        </dl>
+        <div class="buy-row">
+          <button class="btn" type="button" data-add="char">Add to cart</button>
+          <span class="added" data-added="char" role="status" aria-live="polite"></span>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="photo"><img src="coastal-roast-label.svg" alt="Coastal Roast label"></div>
+        <div class="title"><h3>Coastal Roast</h3><p class="price">$8</p></div>
+        <p class="meta">Potato seasoning · 4 oz jar</p>
+        <p class="desc">Made for potatoes, plain and simple. Toss them in a little oil, shake on plenty, and roast until the edges get golden and crispy.</p>
+        <dl class="facts">
+          <dt>Best on</dt><dd>Roasted potatoes, fries, veggies</dd>
+          <dt>Ingredients</dt><dd>Himalayan pink salt, rosemary, thyme, marjoram, basil</dd>
+        </dl>
+        <div class="buy-row">
+          <button class="btn" type="button" data-add="roast">Add to cart</button>
+          <span class="added" data-added="roast" role="status" aria-live="polite"></span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="pack-wrap wrap" aria-labelledby="pack-name">
+    <div class="pack">
+      <div>
+        <h3 id="pack-name">The cookout pack</h3>
+        <p>One Coastal Char and one Coastal Roast. That's dinner handled.</p>
+      </div>
+      <div class="buy-row">
+        <p class="price">$14</p>
+        <button class="btn light" type="button" data-add="pack">Add both</button>
+        <span class="added" data-added="pack" role="status" aria-live="polite"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="how" id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">At the grill</p>
+        <h2 class="h2">How we use 'em</h2>
+        <p>Tri-tip and roasted potatoes is the dinner these two were made for. Get the potatoes in the oven first, and they'll be ready right about when the meat's ready to slice.</p>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <h3>Coastal Char on tri-tip</h3>
+          <p class="sub">Steaks, burgers and chicken work the same way.</p>
+          <ol>
+            <li>Pat the meat dry.</li>
+            <li>Coat it on every side. Don't be shy.</li>
+            <li>Let it sit while the grill heats up.</li>
+            <li>Sear it over high heat, then move it to the cooler side to finish.</li>
+            <li>Give it 10 minutes to rest, then slice against the grain.</li>
+          </ol>
+        </div>
+        <div class="card">
+          <h3>Coastal Roast on potatoes</h3>
+          <p class="sub">Fries and veggies work the same way.</p>
+          <ol>
+            <li>Crank the oven to 425°F.</li>
+            <li>Cut the potatoes into bite-size chunks, about an inch.</li>
+            <li>Toss with olive oil and a good shake of Coastal Roast.</li>
+            <li>Spread them out on a sheet pan so they aren't crowded.</li>
+            <li>Roast for 35 to 40 minutes, flipping once, until golden and crispy.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <img src="logo.svg" alt="South Coast Spices badge: a beach with a pier and palm trees">
+      <div class="copy">
+        <p class="kicker">Our story</p>
+        <h2 class="h2">It started with a favorite spice</h2>
+        <p>When I was 17, my favorite seasoning disappeared. The company that made it went out of business, and nothing else on the shelf tasted the same.</p>
+        <p>So I set out to recreate it myself. That's how South Coast Spices got started.</p>
+        <p>Today it's two seasonings, Coastal Char for meat and Coastal Roast for potatoes, and every batch is still mixed by hand right here in Orange County.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="info">
+        <p class="kicker">Say hello</p>
+        <h2 class="h2">Get in touch</h2>
+        <p style="max-width:28em">Got a question, want to stock us, or need to set up a pickup? Drop us a line and we'll get back to you.</p>
+        <p style="margin-top:8px"><span>Email</span><a href="mailto:rustyteitelman08@gmail.com">rustyteitelman08@gmail.com</a></p>
+        <p><span>Instagram</span><a href="https://instagram.com/southcoastspices" target="_blank" rel="noopener">@southcoastspices</a></p>
+      </div>
+      <form class="contact-form" id="contact-form" novalidate>
+        <label for="c-name">Name<input id="c-name" name="name" autocomplete="name" required></label>
+        <label for="c-email">Email<input id="c-email" name="email" type="email" autocomplete="email" required></label>
+        <label for="c-message">Message<textarea id="c-message" name="message" rows="5" required></textarea></label>
+        <div class="buy-row">
+          <button class="btn" type="submit">Send it</button>
+        </div>
+        <p class="form-note" id="contact-note" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <div class="mark">
+        <img src="logo.svg" alt="">
+        <span><b>SOUTH COAST SPICES</b><small>Meat and potatoes, seasoned right.</small></span>
+      </div>
+      <nav aria-label="Footer">
+        <div><span>SHOP</span><a href="#shop">Coastal Char</a><a href="#shop">Coastal Roast</a><a href="#how">How to use</a></div>
+        <div><span>COMPANY</span><a href="#about">About</a><a href="#contact">Contact</a></div>
+        <div><span>FOLLOW</span><a href="https://instagram.com/southcoastspices" target="_blank" rel="noopener">@southcoastspices</a><a href="mailto:rustyteitelman08@gmail.com">rustyteitelman08@gmail.com</a></div>
+      </nav>
+    </div>
+    <div class="legal"><span>© 2026 South Coast Spices</span><span>Mixed by hand in Orange County, CA</span></div>
+  </div>
+</footer>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="cart" role="dialog" aria-modal="true" aria-labelledby="cart-title" hidden>
+  <div class="drawer-head">
+    <h2 id="cart-title">Your cart</h2>
+    <button class="close" type="button" id="close-cart">Close</button>
+  </div>
+  <div class="drawer-body">
+    <div id="cart-lines"></div>
+    <div id="cart-extra">
+      <p class="ship-meter" id="ship-meter"></p>
+      <fieldset>
+        <legend>How do you want it?</legend>
+        <label class="choice"><input type="radio" name="delivery" value="ship" checked> Ship it to me</label>
+        <label class="choice"><input type="radio" name="delivery" value="pickup"> I'll pick it up in Orange County (free)</label>
+      </fieldset>
+    </div>
+  </div>
+  <div class="drawer-foot">
+    <div class="sum"><span>Subtotal</span><span id="subtotal">$0</span></div>
+    <p class="sum-note" id="ship-note"></p>
+    <button class="btn" type="button" id="place-order">Check out</button>
+    <p class="order-help" id="order-help">You'll pay by card on Square's secure checkout page. Questions? Email <code>rustyteitelman08@gmail.com</code>.</p>
+  </div>
+</aside>
+
+<script>
+(function () {
+  var EMAIL = 'rustyteitelman08@gmail.com';
+  var FREE_SHIP = 30;
+  var SHIPPING = 6;
+  var PRODUCTS = {
+    char:  { name: 'Coastal Char (4 oz)', price: 8 },
+    roast: { name: 'Coastal Roast (4 oz)', price: 8 },
+    pack:  { name: 'Cookout pack (1 Char + 1 Roast)', price: 14 }
+  };
+  var cart = {};
+  try { cart = JSON.parse(localStorage.getItem('scs-cart')) || {}; } catch (e) { cart = {}; }
+  Object.keys(cart).forEach(function (k) { if (!PRODUCTS[k] || !(cart[k] > 0)) delete cart[k]; });
+
+  function save() { try { localStorage.setItem('scs-cart', JSON.stringify(cart)); } catch (e) {} }
+  function money(n) { return '$' + (n % 1 ? n.toFixed(2) : n); }
+  function count() { return Object.keys(cart).reduce(function (s, k) { return s + cart[k]; }, 0); }
+  function subtotal() { return Object.keys(cart).reduce(function (s, k) { return s + cart[k] * PRODUCTS[k].price; }, 0); }
+  function delivery() { var r = document.querySelector('input[name="delivery"]:checked'); return r ? r.value : 'ship'; }
+  function $(id) { return document.getElementById(id); }
+
+  var drawer = $('cart'), scrim = $('scrim'), lastFocus = null;
+
+  function render() {
+    $('cart-count').textContent = count();
+    var lines = $('cart-lines');
+    lines.textContent = '';
+    var keys = Object.keys(cart);
+    if (!keys.length) {
+      var p = document.createElement('p');
+      p.className = 'empty';
+      p.textContent = 'Your cart is empty. Add a jar or two from the shop.';
+      lines.appendChild(p);
+    }
+    keys.forEach(function (k) {
+      var item = PRODUCTS[k], row = document.createElement('div');
+      row.className = 'line';
+      row.innerHTML = '<div><b></b><div class="each"></div></div><div class="total"></div>' +
+        '<div class="qty"><button type="button" aria-label="One less">−</button><output></output><button type="button" aria-label="One more">+</button></div>' +
+        '<button type="button" class="remove">Remove</button>';
+      row.querySelector('b').textContent = item.name;
+      row.querySelector('.each').textContent = money(item.price) + ' each';
+      row.querySelector('.total').textContent = money(item.price * cart[k]);
+      row.querySelector('output').textContent = cart[k];
+      var btns = row.querySelectorAll('.qty button');
+      btns[0].addEventListener('click', function () { cart[k]--; if (cart[k] <= 0) delete cart[k]; save(); render(); });
+      btns[1].addEventListener('click', function () { cart[k]++; save(); render(); });
+      row.querySelector('.remove').addEventListener('click', function () { delete cart[k]; save(); render(); });
+      lines.appendChild(row);
+    });
+    var sub = subtotal(), empty = !keys.length;
+    $('cart-extra').hidden = empty;
+    $('subtotal').textContent = money(sub);
+    $('place-order').disabled = empty;
+    $('ship-meter').textContent = sub >= FREE_SHIP ? 'Your order ships free.' : 'Add ' + money(FREE_SHIP - sub) + ' more for free shipping.';
+    var note = $('ship-note');
+    if (empty) note.textContent = '';
+    else if (delivery() === 'pickup') note.textContent = 'Pickup in Orange County is free. We\'ll email you to set a time.';
+    else if (sub >= FREE_SHIP) note.textContent = 'Shipping is free.';
+    else note.textContent = 'Shipping is ' + money(SHIPPING) + '. It\'s free over $30.';
+  }
+
+  function openCart() {
+    lastFocus = document.activeElement;
+    drawer.hidden = false; scrim.hidden = false;
+    document.body.style.overflow = 'hidden';
+    $('close-cart').focus();
+  }
+  function closeCart() {
+    drawer.hidden = true; scrim.hidden = true;
+    document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+  $('open-cart').addEventListener('click', openCart);
+  $('close-cart').addEventListener('click', closeCart);
+  scrim.addEventListener('click', closeCart);
+  drawer.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeCart(); });
+  document.querySelectorAll('input[name="delivery"]').forEach(function (r) { r.addEventListener('change', render); });
+
+  document.querySelectorAll('[data-add]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var k = b.getAttribute('data-add');
+      cart[k] = (cart[k] || 0) + 1; save(); render();
+      var note = document.querySelector('[data-added="' + k + '"]');
+      note.textContent = 'Added. ';
+      var a = document.createElement('a');
+      a.href = '#'; a.textContent = 'View cart (' + count() + ')';
+      a.addEventListener('click', function (e) { e.preventDefault(); openCart(); });
+      note.appendChild(a);
+    });
+  });
+
+  // Card checkout goes through Square. If that isn't reachable (preview, or not set up yet),
+  // fall back to emailing the order.
+  $('place-order').addEventListener('click', function () {
+    var keys = Object.keys(cart); if (!keys.length) return;
+    var btn = $('place-order');
+    btn.disabled = true; btn.textContent = 'Opening checkout…';
+    fetch('/api/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: cart, delivery: delivery() })
+    }).then(function (res) {
+      return res.json().then(function (data) {
+        if (!res.ok || !data.url) throw new Error(data.error || 'checkout failed');
+        location.href = data.url;
+      });
+    }).catch(function () {
+      btn.disabled = false; btn.textContent = 'Check out';
+      $('order-help').textContent = 'Card checkout isn\'t working right now, so we opened an email with your order instead. We\'ll reply to set up payment.';
+      emailOrder();
+    });
+  });
+
+  function emailOrder() {
+    var keys = Object.keys(cart);
+    var sub = subtotal(), pickup = delivery() === 'pickup';
+    var body = ['Hi! I\'d like to order:', ''];
+    keys.forEach(function (k) { body.push(cart[k] + ' x ' + PRODUCTS[k].name + ' = ' + money(cart[k] * PRODUCTS[k].price)); });
+    body.push('', 'Subtotal: ' + money(sub));
+    body.push(pickup ? 'Delivery: Pickup in Orange County' : 'Delivery: Ship it' + (sub >= FREE_SHIP ? ' (free shipping)' : ''));
+    body.push('', 'My name: ', pickup ? 'Best way to reach me: ' : 'Shipping address: ', '');
+    location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Order from the South Coast Spices website') + '&body=' + encodeURIComponent(body.join('\n'));
+  }
+
+  // Square sends people back here after they pay.
+  if (/[?&]order=thanks\b/.test(location.search)) {
+    cart = {}; save();
+    var thanks = document.createElement('div');
+    thanks.className = 'banner'; thanks.id = 'order-thanks';
+    thanks.setAttribute('role', 'status');
+    thanks.textContent = 'Thanks for your order! You\'ll get a receipt by email. If you chose pickup, we\'ll email you to set a time.';
+    document.body.insertBefore(thanks, document.body.firstChild);
+    try { history.replaceState(null, '', location.pathname + location.hash); } catch (e) {}
+  }
+
+  $('contact-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = e.target, note = $('contact-note');
+    if (!f.checkValidity()) { note.textContent = 'Please add your name, a valid email and a message.'; return; }
+    var body = f.message.value + '\n\n' + f.name.value + '\n' + f.email.value;
+    location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Message from ' + f.name.value) + '&body=' + encodeURIComponent(body);
+    note.textContent = 'Your email app should open with the message ready to send. If it doesn\'t, email us at ' + EMAIL + '.';
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
